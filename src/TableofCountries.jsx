@@ -3,7 +3,7 @@ import React from "react";
 function TableofCountries({countries})
 {
     return(
-        <table>
+        <table className="table table-striped ">
             <tr>
                 <th>Country</th>
                 <th>Capital</th>

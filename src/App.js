@@ -1,6 +1,4 @@
-import './App.css';
 import CountryList from './CountryList';
-import axios from 'axios';
 
 function App() {
   return (
