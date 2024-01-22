@@ -1,9 +1,10 @@
 import React from "react";
-
-function Contact()
-{
-    return(
+import { Link, Outlet } from 'react-router-dom';
+import Header from "./Header";
+function Contact() {
+    return (
         <>
+            <Header></Header>
             <div>Contact Us:</div>
         </>
     )

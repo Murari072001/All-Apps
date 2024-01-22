@@ -10,30 +10,47 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Contact from './Contact';
+import Products from './Products';
+import Hardware from './AllProducts/Hardware';
+import Software from './AllProducts/Software';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children:[
-      {
-        path:'/home',
-        element: <Home></Home>
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+    },
+    {
+      path:'/home',
+      element: <Home></Home>
+    },
+    {
+      path:'/products',
+      element: <Products></Products>,
+      children:[
+        {
+          path:'hardware',
+          element:<Hardware></Hardware>
+        },
+        {
+          path:'software',
+          element:<Software></Software>
+        }
+      ]
+    },
+    {
+    path:'/contact',
+    element:<Contact></Contact>
       },
-      {
-      path:'/contact',
-      element:<Contact></Contact>
-    }]
-  },
-  {
-    path:'/about',
-    element:<About></About>
-  }
+    {
+      path:'/about',
+      element:<About></About>
+    }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RouterProvider router={router} />
+  <RouterProvider router={router} ></RouterProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
