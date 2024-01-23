@@ -13,6 +13,8 @@ import Contact from './Contact';
 import Products from './Products';
 import Hardware from './AllProducts/Hardware';
 import Software from './AllProducts/Software';
+import Countries from './Countries';
+import CountryDetails from './CountryDetails';
 
 const router = createBrowserRouter(
   [
@@ -23,6 +25,11 @@ const router = createBrowserRouter(
     {
       path:'/home',
       element: <Home></Home>
+    },
+    {
+      path:'/countries',
+      element:<Countries></Countries>,
+      children:[]
     },
     {
       path:'/products',
@@ -45,6 +52,10 @@ const router = createBrowserRouter(
     {
       path:'/about',
       element:<About></About>
+    },
+    {
+      path:'/countries/countrydetails/:cname',
+      element:<CountryDetails></CountryDetails>
     }
 ]);
 
