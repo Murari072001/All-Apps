@@ -29,7 +29,10 @@ const router = createBrowserRouter(
     {
       path:'/countries',
       element:<Countries></Countries>,
-      children:[]
+      children:[{
+        path:'countrydetails/:cname',
+        element:<CountryDetails></CountryDetails>
+      }]
     },
     {
       path:'/products',
@@ -53,10 +56,6 @@ const router = createBrowserRouter(
       path:'/about',
       element:<About></About>
     },
-    {
-      path:'/countries/countrydetails/:cname',
-      element:<CountryDetails></CountryDetails>
-    }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
