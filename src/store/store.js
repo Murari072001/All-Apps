@@ -1,8 +1,8 @@
-import { combineReducers, createStore } from "redux";
-import CounterReducer1 from "./reducers/counterreducer1";
-import CounterReducer2 from "./reducers/counterreducer2";
-import CounterReducer3 from "./reducers/counterreducer3";
+import { createStore, combineReducers } from "redux";
+import TodoReducer from "./reducers/TodolistReducer";
 
-let store = createStore(combineReducers({counter1:CounterReducer1,counter2:CounterReducer2,counter3:CounterReducer3}))
+let store=new createStore(combineReducers({
+    todolist:TodoReducer
+}))
 
 export default store
