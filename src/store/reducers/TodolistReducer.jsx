@@ -23,12 +23,12 @@ let TodoReducer=(state=initialValue,action)=>{
     }
     if(action.type==='donetodo'){
         var temp=[...state.todos]
-        temp[action.index].isdone=!temp[action.index].isdone
+        temp[action.index].isdone=true
         return {...state,todos:[...temp]}
     }
     if(action.type==='undotodo'){
         var temp=[...state.todos]
-        temp[action.index].isdone=!temp[action.index].isdone
+        temp[action.index].isdone=false
         return {...state,todos:[...temp]}
     }
     return state
