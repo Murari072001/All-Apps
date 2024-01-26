@@ -5,25 +5,41 @@ function Todolist(props)
 {
     let inp=React.useRef()
     const handleAdd = ()=>{
-        props.dispatch({type:'addtodo'})
+        props.add()
         inp.current.value=""
-        props.dispatch({type:'updatenewtodo',payload:''})
+        props.update('')
     }
     console.log(props)
     return(<div>
         <h1>TodoList</h1>
-        <input type="text" ref={inp} onKeyUp={(e)=>{props.dispatch({type:'updatenewtodo',payload:e.target.value})}} />
+        <input type="text" ref={inp} onKeyUp={(e)=>{props.update(e.target.value)}} />
         <button onClick={()=>{handleAdd()}}>Add</button>
         <ul>
-            {props.todolist.todos.map((todo,i)=>{
+            {props.todos.map((todo,i)=>{
             return(
-            <li  style={todo.isdone?{color:'red',textDecoration:"line-through"}:{color:'black'}} >{todo.task}
-            {!todo.isdone&&<button onClick={()=>{props.dispatch({type:'donetodo',index:i})}}>Done</button>}
-            {todo.isdone&&<button onClick={()=>{props.dispatch({type:'undotodo',index:i})}}>Undo</button>}
-            <button onClick={()=>{props.dispatch({type:'delete',index:i})}}>Delete</button>
+            <li>{todo.task}
+            <button onClick={()=>{props.delete(i)}}>Delete</button>
             </li>)})}
         </ul>
     </div>)
 }
 
-export default connect((store)=>{return store}) (Todolist)
+function MapStateToProps(state){
+    return state.todolist
+}
+function MapDispatchToProps(dispatch){
+    return{
+        update:(e)=>{
+            dispatch({type:'updatenewtodo',payload:e})
+        },
+        add:()=>{
+            dispatch({type:'addtodo'})
+        },
+        delete:(i)=>{
+            dispatch({type:'delete',index:i})
+        }
+        
+    }
+}
+
+export default connect(MapStateToProps, MapDispatchToProps) (Todolist)

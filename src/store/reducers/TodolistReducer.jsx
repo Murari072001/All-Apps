@@ -21,16 +21,6 @@ let TodoReducer=(state=initialValue,action)=>{
         temp.splice(action.index,1)
         return{...state,todos:[...temp]}
     }
-    if(action.type==='donetodo'){
-        var temp=[...state.todos]
-        temp[action.index].isdone=!temp[action.index].isdone
-        return {...state,todos:[...temp]}
-    }
-    if(action.type==='undotodo'){
-        var temp=[...state.todos]
-        temp[action.index].isdone=!temp[action.index].isdone
-        return {...state,todos:[...temp]}
-    }
     return state
 }
 
