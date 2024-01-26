@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import React from "react";
+import { actupnewtodo,acttogglestatus,actdelete, actadd, acttoggleupdate, actupdate } from "./store/actionCreators";
 
 function Todolist(props) {
     let x = React.useRef(null)
@@ -46,12 +47,12 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
     return{
-        upnewtodo:(e)=>{dispatch({ type: 'newtodo', payload: e}) },
-        togglestatus:(ind)=>{dispatch({ type: 'togglestatus', index: ind })},
-        delete:(ind)=>{dispatch({ type: 'delete', index: ind }) },
-        add:()=>{dispatch({ type: "addtodo" })},
-        toggleupdate:(i)=>{dispatch({type:'toggleupdate',index:i})},
-        update:()=>{dispatch({type:'update'})}
+        upnewtodo:(e)=>{dispatch(actupnewtodo(e))},
+        togglestatus:(ind)=>{dispatch(acttogglestatus(ind))},
+        delete:(ind)=>{dispatch(actdelete(ind)) },
+        add:()=>{dispatch(actadd())},
+        toggleupdate:(i)=>{dispatch(acttoggleupdate(i))},
+        update:()=>{dispatch(actupdate)}
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Todolist)
