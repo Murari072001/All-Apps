@@ -2,59 +2,43 @@ import { connect } from "react-redux";
 import React from "react";
 
 function Todolist(props) {
-    let inp = React.useRef()
-    const handleAdd = () => {
-        props.add()
-        props.updatenewtodo(inp.current.value = "")
+    let x = React.useRef(null)
+    const handleAddTodo = () => {
+        props.dispatch({ type: "addtodo" })
+        x.current.value = ''
+        props.dispatch({ type: 'newtodo', payload: '' })
     }
-    const handleEdit=(todo,i)=>{
-        props.toggleupdate(i)
-        props.updatenewtodo(inp.current.value = todo.task)
+    const handleEdit=(t,i)=>{
+        x.current.value=t.task;
+        props.dispatch({type:'newtodo',payload:t.task})
+        props.dispatch({type:'toggleupdate',index:i})
     }
     const handleUpdate=()=>{
-        props.update()
-        props.toggleupdate(null)
-        props.updatenewtodo(inp.current.value = "")
+        props.dispatch({type:'update'})
+        props.dispatch({type:'toggleupdate',index:null})
+        x.current.value = ''
+        props.dispatch({ type: 'newtodo', payload: '' })
     }
-    console.log(props)
-    return (<div className="container border border-3 border-dark">
-        <h1 className="m-3 p-3 border border-3 border-dark">TodoList</h1>
-        <div className="m-3 p-3 border border-3 border-dark">
-            <div className="form-floating">
-            <input type="text" className="form-control" id="input" placeholder="Todo" ref={inp} onKeyUp={(e) => { props.updatenewtodo(e.target.value) }} />
-            <label for="input">Enter New Todo</label>
-            </div>
-             <br/>
-            {!props.isupdate&&<button className="btn w-100 btn-warning " onClick={() => { handleAdd() }}>Add</button>}
-            {props.isupdate&&<button className="btn w-100 btn-warning " onClick={() => { handleUpdate() }}>Update</button>}
-            <ul className="mt-3">
-                {props.todos.map((todo, i) => {
-                    return (
-                        <li className="m-2 p-2" style={todo.isdone ? { color: 'red', textDecoration: "line-through" } : { color: 'black' }} >{todo.task}
-                            {!todo.isdone && <button className="btn btn-success ms-2" onClick={() => { props.done(i) }}>Done</button>}
-                            {todo.isdone && <button className="btn btn-warning ms-2" onClick={() => { props.undo(i) }}>Undo</button>}
-                            <button className="btn btn-danger ms-2" onClick={() => {handleEdit(todo,i)}}>Edit</button>
-                            <button className="btn btn-danger ms-2" onClick={() => { props.delete(i) }}>Delete</button>
+    console.log(props);
+    return (
+        <div>
+            <input type="text" ref={x} onKeyUp={(e) => { props.dispatch({ type: 'newtodo', payload: e.target.value }) }} />
+            {!props.todolist.isupdate&&<button disabled={!props.todolist.newtodo.task} onClick={() => { handleAddTodo() }}>Add</button>}
+            {props.todolist.isupdate&&<button disabled={!props.todolist.newtodo.task} onClick={() => { handleUpdate() }}>Update</button>}
+            <ul>
+                {
+                    props.todolist.todos.map((todo, ind) => {
+                        return (
+                        <li>
+                            <span style={todo.isdone ? { color: 'red', textDecoration: 'line-through' } : { color: 'black' }} >{todo.task}</span>
+                            <button onClick={() => { props.dispatch({ type: 'togglestatus', index: ind }) }}>{todo.isdone ? "Undo" : 'Done'}</button>
+                            {!todo.isdone&&<button onClick={() => {handleEdit(todo,ind)}}>Edit</button>}
+                            {todo.isdone&&<button onClick={() => { props.dispatch({ type: 'delete', index: ind }) }}>delete</button>}
                         </li>)
-                })}
+                    })
+                }
             </ul>
         </div>
-    </div>)
+    )
 }
-function mapStateToProps(state) {
-    return state.todolist
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        updatenewtodo: (value) => { dispatch({ type: 'updatenewtodo', payload: value }) },
-        add: () => { dispatch({ type: 'addtodo' }) },
-        done: (i) => { dispatch({ type: 'donetodo', index: i }) },
-        undo: (i) => { dispatch({ type: 'undotodo', index: i }) },
-        delete: (i) => { dispatch({ type: 'delete', index: i }) },
-        edit:()=>{dispatch({type:"edit"})},
-        toggleupdate:(i)=>{dispatch({type:'toggleupdate',index:i})},
-        update:()=>{dispatch({type:'update'})}
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Todolist)
+export default connect(store => store)(Todolist)
