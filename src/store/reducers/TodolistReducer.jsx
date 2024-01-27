@@ -6,7 +6,8 @@ const initialValue = {
         isdone: false,
     },
     isupdate:false,
-    updateindex:null
+    updateindex:null,
+    filteredarr:[]
 }
 
 let TodoReducer = (state = initialValue, action) => {
@@ -41,6 +42,9 @@ let TodoReducer = (state = initialValue, action) => {
         let temp=[...state.todos]
         temp[state.updateindex].task=state.newtodo.task;
         return{...state,todos:[...temp]}
+    }
+    if(action.type==='fillarr'){
+        return{...state,filteredarr:[...action.payload]}
     }
     return state
 }

@@ -21,3 +21,6 @@ export function acttoggleupdate(i){
 export function actupdate(){
     return {type:'update'}
 }
+export function actfill(arr){
+    return {type:'fillarr',payload:arr}
+}

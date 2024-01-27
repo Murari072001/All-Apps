@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
 import React from "react";
-import { actupnewtodo,acttogglestatus,actdelete, actadd, acttoggleupdate, actupdate } from "./store/actionCreators";
+import { actupnewtodo,acttogglestatus,actdelete, actadd, acttoggleupdate, actupdate, actfill } from "./store/actionCreators";
+import Todo from "./Todo";
 
 function Todolist(props) {
     let x = React.useRef(null)
     const handleAddTodo = () => {
         props.add()
+        filterStatus()
         x.current.value = ''
         props.upnewtodo('')
     }
@@ -20,21 +22,42 @@ function Todolist(props) {
         x.current.value = ''
         props.upnewtodo('')
     }
+
+    function filterStatus(e=''){
+        console.log(props);
+        let temp = [...props.todos]
+        temp = temp.filter((todo)=>{
+            if(e==='com'){
+                return (
+                    todo.isdone
+                )
+            }
+            if(e==='incp'){
+                return(!todo.isdone)
+            }
+            return(true)
+        })
+        console.log(temp);
+        props.fillarr(temp)
+    }
+    // console.clear()
     console.log(props);
     return (
         <div>
             <input type="text" ref={x} onKeyUp={(e) => { props.upnewtodo(e.target.value )}} />
             {!props.isupdate&&<button disabled={!props.newtodo.task} onClick={() => { handleAddTodo() }}>Add</button>}
             {props.isupdate&&<button disabled={!props.newtodo.task} onClick={() => { handleUpdate() }}>Update</button>}
+            <div>
+                <input type="radio" onChange={(e)=>{filterStatus(e.target.id)}} name="status" id="all" /><label for="all">All</label>
+                <input type="radio" onChange={(e)=>{filterStatus(e.target.id)}} name="status" id="com" /><label htmlFor="com">Complete</label>
+                <input type="radio" onChange={(e)=>{filterStatus(e.target.id)}} name="status" id="incp" /><label htmlFor="incp">Incomplete</label>
+            </div>
             <ul>
                 {
-                    props.todos.map((todo, ind) => {
+                    props.filteredarr.map((todo, ind) => {
                         return (
                         <li>
-                            <span style={todo.isdone ? { color: 'red', textDecoration: 'line-through' } : { color: 'black' }} >{todo.task}</span>
-                            <button onClick={() => { props.togglestatus(ind) }}>{todo.isdone ? "Undo" : 'Done'}</button>
-                            {!todo.isdone&&<button onClick={() => {handleEdit(todo,ind)}}>Edit</button>}
-                            {todo.isdone&&<button onClick={() => { props.delete(ind)}}>delete</button>}
+                            <Todo todo={todo} handleEdit={handleEdit} props={props} ind={ind}></Todo>
                         </li>)
                     })
                 }
@@ -52,7 +75,9 @@ function mapDispatchToProps(dispatch){
         delete:(ind)=>{dispatch(actdelete(ind)) },
         add:()=>{dispatch(actadd())},
         toggleupdate:(i)=>{dispatch(acttoggleupdate(i))},
-        update:()=>{dispatch(actupdate)}
+        update:()=>{dispatch(actupdate())},
+        fillarr:(arr)=>{dispatch(actfill(arr))}
+
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Todolist)
