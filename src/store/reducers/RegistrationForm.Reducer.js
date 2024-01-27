@@ -7,6 +7,7 @@ const RegistrationReducer=(state=initialValue,action)=>{
         {
             return {...state,users:[...state.users,action.payload]}
         }
+        return state
 }
 
 export default RegistrationReducer

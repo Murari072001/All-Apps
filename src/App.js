@@ -1,11 +1,12 @@
 import { Provider } from 'react-redux';
 import store from './store/store';
+import UserForm from './UserRegistrationForm';
 
 function App() {
   return (
     <Provider store={store}>
-      <h1>Hello World</h1>
       <div>
+        <UserForm></UserForm>
       </div>
     </Provider>
   );
