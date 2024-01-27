@@ -1,6 +1,7 @@
-import { combineReducers, createStore } from "redux";
-import RegistrationReducer from "./reducers/RegistrationForm.Reducer";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import reducer from "./reducers/AllReducers";
+import { thunk } from "redux-thunk";
 
-let store = createStore(combineReducers({user:RegistrationReducer}))
+let store = createStore(reducer,applyMiddleware(thunk))
 
 export default store
