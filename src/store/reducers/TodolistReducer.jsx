@@ -17,7 +17,7 @@ let TodoReducer = (state = initialValue, action) => {
     }
     if (action.type === 'addtodo') {
         // if (state.newtodo.task) 
-         return { ...state, todos: [...state.todos, state.newtodo] } 
+         return { ...state, todos: [...state.todos, state.newtodo],filteredarr:[...state.todos, state.newtodo] } 
     }
     if (action.type === 'delete') {
         let temp = [...state.todos]

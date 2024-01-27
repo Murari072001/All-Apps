@@ -7,7 +7,6 @@ function Todolist(props) {
     let x = React.useRef(null)
     const handleAddTodo = () => {
         props.add()
-        filterStatus()
         x.current.value = ''
         props.upnewtodo('')
     }
