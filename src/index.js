@@ -4,28 +4,33 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
-    createBrowserRouter,
-    RouterProvider,
-  } from "react-router-dom";
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import UserRegistrationForm from './UserRegistrationForm';
 import LoginForm from './LoginForm';
+import UserDashBoard from './Dashboard';
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <App />,
+  {
+    path: "/",
+    element: <App />,
+    children: [{
+      path: '/register',
+      element: <UserRegistrationForm></UserRegistrationForm>
     },
     {
-        path:'/new-user-registration',
-        element:<UserRegistrationForm></UserRegistrationForm>
+      path: '/login',
+      element: <LoginForm></LoginForm>
     },
     {
-        path:'/login-existing',
-        element:<LoginForm></LoginForm>
-    }
-  ]);
+      path: '/dashboard',
+      element: <UserDashBoard></UserDashBoard>
+    }]
+  }
+]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
 );
 
 // If you want to start measuring performance in your app, pass a function

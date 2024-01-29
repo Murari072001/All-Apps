@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import RegistrationReducer from "./RegistrationForm.Reducer";
-import LoginForm from "../../LoginForm";
+import LoginReducer from "./LoginReducer";
 
-const reducer = combineReducers({user:RegistrationReducer,login:LoginForm})
+const reducer = combineReducers({user:RegistrationReducer,login:LoginReducer})
 
 export default reducer
