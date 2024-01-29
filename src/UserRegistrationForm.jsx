@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import { addnewuser } from "./store/userActions";
+import { actcheckuser, addnewuser } from "./store/userActions";
 import { useNavigate } from "react-router-dom";
 
 const UserForm = (props) => {
@@ -30,7 +30,6 @@ const UserForm = (props) => {
             }),
             onSubmit: (values) => {
                 handleSubmitBtn(values)
-
             }
         }
     )
@@ -39,7 +38,7 @@ const UserForm = (props) => {
         userFormDetails.current.reset()
         userFormik.handleReset()
     }
-
+    console.log('user::',props);
     return (
         <div className="container border border-dark border-2 p-3 mt-3 rounded-5">
             <h1 className="text-center">User Registration Form</h1>
@@ -68,8 +67,9 @@ const UserForm = (props) => {
                     </select>
                 </div>
                 {userFormik.touched.email && <span style={{ color: 'red' }}>{userFormik.errors.email}</span>}
+                {props.checkuser.length!==0&&<span>This username Already exists</span>}
                 <div className="form-floating m-2">
-                    <input type="email" id="email" name='email' placeholder="email:" className={userFormik.touched.email ? ((userFormik.errors.email) ? "form-control is-invalid" : "form-control is-valid") : "form-control"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
+                    <input type="email" id="email" name='email' placeholder="email:" className={userFormik.touched.email ? ((userFormik.errors.email) ? "form-control is-invalid" : "form-control is-valid") : "form-control"} onKeyUp={(e)=>{props.checkemail(e.target.value)}} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
                     <label htmlFor="email">Enter User Id:</label>
                 </div>
                 {userFormik.touched.password && <span style={{ color: 'red' }}>{userFormik.errors.password}</span>}
@@ -82,8 +82,8 @@ const UserForm = (props) => {
                     <input type="number" id="mobile" name='mobile' placeholder="mobile:" className={userFormik.touched.mobile ? ((userFormik.errors.mobile) ? "form-control is-invalid" : "form-control is-valid") : "form-control"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
                     <label htmlFor="mobile">Mobile Number:</label>
                 </div>
-                <button type="submit" className="btn btn-primary w-25 ">Submit</button>
-                <h6 className="m-2 text-end">Existing User? <button className="btn btn-success" onClick={() => { navi('/login') }}>Login</button></h6>
+                <button type="submit" className="btn btn-primary w-25 ">Register</button>
+                <h6 className="m-2 text-end">Existing User? <button className="btn btn-success" onClick={() => { navi('/') }}>Login</button></h6>
 
             </form>
         </div>
@@ -94,7 +94,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        addnew: (values) => { dispatch(addnewuser(values)) }
+        addnew: (values) => { dispatch(addnewuser(values)) },
+        checkemail:(value)=>{dispatch(actcheckuser(value))}
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(UserForm)

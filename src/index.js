@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -10,6 +10,8 @@ import {
 import UserRegistrationForm from './UserRegistrationForm';
 import LoginForm from './LoginForm';
 import UserDashBoard from './Dashboard';
+import Profile from './Profile';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,12 +21,16 @@ const router = createBrowserRouter([
       element: <UserRegistrationForm></UserRegistrationForm>
     },
     {
-      path: '/login',
+      path: '/',
       element: <LoginForm></LoginForm>
     },
     {
       path: '/dashboard',
-      element: <UserDashBoard></UserDashBoard>
+      element: <UserDashBoard></UserDashBoard>,
+      children: [{
+        path:'profile',
+        element:<Profile></Profile>
+      }]
     }]
   }
 ]);
