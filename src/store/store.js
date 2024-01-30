@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from "redux";
-import TodoReducer from "./reducers/TodolistReducer";
+import CartReducer from "./reducers/CartReducer";
 
 let store=new createStore(combineReducers({
-    todolist:TodoReducer
+    cart:CartReducer
 }))
 
 export default store

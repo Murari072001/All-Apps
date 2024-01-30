@@ -1,14 +1,13 @@
 import { Provider } from 'react-redux';
 import store from './store/store';
-import TodoList from './TodoList';
+import { Outlet } from 'react-router';
+import Header from './Header';
 
 function App() {
   return (
     <Provider store={store}>
-      <h1>Hello World</h1>
-      <div>
-        <TodoList></TodoList>
-      </div>
+      <Header></Header>
+      <Outlet></Outlet>
     </Provider>
   );
 }
