@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import { actcheckuser, addnewuser } from "./store/userActions";
+import { actcheckuser, addnewuser } from "./store/actions/userActions";
 import { useNavigate } from "react-router-dom";
 
 const UserForm = (props) => {
@@ -18,6 +18,7 @@ const UserForm = (props) => {
                 email: '',
                 password: '',
                 mobile: '',
+                cart:[]
             },
             validationSchema: Yup.object({
                 firstname: Yup.string().required("*FirstName is Required*"),
@@ -38,7 +39,6 @@ const UserForm = (props) => {
         userFormDetails.current.reset()
         userFormik.handleReset()
     }
-    console.log('user::',props);
     return (
         <div className="container border border-dark border-2 p-3 mt-3 rounded-5">
             <h1 className="text-center">User Registration Form</h1>
@@ -83,7 +83,7 @@ const UserForm = (props) => {
                     <label htmlFor="mobile">Mobile Number:</label>
                 </div>
                 <button type="submit" className="btn btn-primary w-25 ">Register</button>
-                <h6 className="m-2 text-end">Existing User? <button className="btn btn-success" onClick={() => { navi('/') }}>Login</button></h6>
+                <h6 className="m-2 text-end">Existing User? <button className="btn btn-success" onClick={() => { navi('/login') }}>Login</button></h6>
 
             </form>
         </div>

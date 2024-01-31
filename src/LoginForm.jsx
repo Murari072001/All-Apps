@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { connect } from "react-redux";
 import React from "react";
 import * as Yup from 'yup'
-import { checklogin } from "./store/loginActions";
+import { checklogin } from "./store/actions/loginActions";
 import { useNavigate } from "react-router-dom";
 
 function LoginForm(props)
@@ -29,7 +29,6 @@ function LoginForm(props)
         props.check(values,navi)
         l.current.reset()
     }
-    console.log(LoginFormik);
     return (
     <div className="text-center border border-3 border-dark p-2 m-2">
         <h2>Login</h2>

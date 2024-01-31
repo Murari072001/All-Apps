@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup'
-import { actedit, actupdate } from "./store/loginActions";
+import { actedit, actupdate } from "./store/actions/loginActions";
 
 function Profile(props)
 {
@@ -24,7 +24,6 @@ function Profile(props)
             }
         }
     )
-        console.log('profile::',profileFormik)
     return (
         <div>
             <h1>Profile</h1>

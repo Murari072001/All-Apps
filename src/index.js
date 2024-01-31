@@ -11,6 +11,8 @@ import UserRegistrationForm from './UserRegistrationForm';
 import LoginForm from './LoginForm';
 import UserDashBoard from './Dashboard';
 import Profile from './Profile';
+import Products from './Products';
+import Cart from './Cart';
 
 const router = createBrowserRouter([
   {
@@ -21,16 +23,25 @@ const router = createBrowserRouter([
       element: <UserRegistrationForm></UserRegistrationForm>
     },
     {
-      path: '/',
+      path: '/login',
       element: <LoginForm></LoginForm>
     },
     {
       path: '/dashboard',
       element: <UserDashBoard></UserDashBoard>,
       children: [{
-        path:'profile',
-        element:<Profile></Profile>
-      }]
+        path: 'profile',
+        element: <Profile></Profile>
+      },
+      {
+        path: '/dashboard',
+        element: <Products></Products>
+      },
+      {
+        path: 'cart',
+        element: <Cart></Cart>
+      },
+    ]
     }]
   }
 ]);

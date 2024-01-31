@@ -1,16 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 
 function UserDashBoard(props)
 {
     const navi=useNavigate()
-    console.log('dash',props);
+    console.log("dash",props);
     return (
        <div>
-         <h1>UserDash board</h1>
          <h1>Welcome:{props.login.gender==='male'?'Mr.':'Mrs.'}{props.login.firstname}</h1>
-         <button onClick={()=>{navi('profile')}}>Profile<i className="person-circle"></i></button>
          <Outlet></Outlet>
        </div>
     )
