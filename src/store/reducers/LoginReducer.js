@@ -4,6 +4,7 @@ const initialValue={
     isedit:false,
     allproducts:[],
     cart:[],
+    searchedproducts:[]
 }
 
 const LoginReducer=(state=initialValue,action)=>{
@@ -36,7 +37,7 @@ const LoginReducer=(state=initialValue,action)=>{
                 return a
             }
         })
-        return {...state,allproducts:[...temp]}
+        return {...state,allproducts:[...temp],searchedproducts:[...temp]}
     }
     if(action.type==='addtocart')
     {
@@ -70,7 +71,11 @@ const LoginReducer=(state=initialValue,action)=>{
             }
             return a
         })
-        return {...state,allproducts:[...temp],cart:[...action.cart]}
+        return {...state,allproducts:[...temp],cart:[...action.cart],login:action.login}
+    }
+    if(action.type==="search")
+    {
+        return {...state,searchedproducts:action.payload}
     }
     return {...state}
 }

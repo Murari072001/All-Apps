@@ -20,13 +20,11 @@ function Cart(props) {
     else {
         return (
             <div className="d-flex flex-wrap">
-                <div  style={{ width: "55%" }}>
+                <div className="d-flex flex-wrap"  style={{ width: "55%" }}>
                     {
                         props.cart.map((product, index) => {
                             return (
-                                <div className="d-flex flex-wrap">
                                     <CartItem product={product} index={index} inc={props.inc} dec={props.dec} rem={props.remove} cart={props.cart} login={props.login} ></CartItem>
-                                </div>
                             )
                         })
                     }

@@ -26,3 +26,19 @@
   transform: scale(1.3);
   cursor: pointer;
 }
+.login{
+  text-align: center;
+  width: 30%;
+}
+.login form{
+  width:90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+.login form button{
+  width:100%
+}
+.search{
+  margin: 5px 60px;
+}

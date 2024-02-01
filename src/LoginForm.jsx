@@ -30,10 +30,10 @@ function LoginForm(props)
         l.current.reset()
     }
     return (
-    <div className="text-center border border-3 border-dark p-2 m-2">
+    <div className="login ms-auto me-auto mt-5 rounded-3 border border-3 border-dark p-2 m-2">
         <h2>Login</h2>
         {(LoginFormik.submitCount>0)&&<b className="text-danger">*Username or Password in incorrect*</b>}
-        <form ref={l} className="card w-50 ms-auto me-auto p-3" onSubmit={LoginFormik.handleSubmit}>
+        <form ref={l} className="" onSubmit={LoginFormik.handleSubmit}>
             {LoginFormik.touched.username&&<b className="text-danger">{LoginFormik.errors.username}</b>}
             <div className="form-floating m-2">
                 <input type="email" name="username" id="username" placeholder="username" className="form-control" onChange={LoginFormik.handleChange} onBlur={LoginFormik.handleBlur} />

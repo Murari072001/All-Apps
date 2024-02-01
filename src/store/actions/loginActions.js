@@ -80,6 +80,18 @@ export function actremove(pro,ind,cart,login)
     return (dispatch)=>{
         cart.splice(ind,1)
         axios.put(`http://localhost:4000/users/${login.id}`,{...login,cart:[...cart]}).then((res)=>{
-            dispatch({type:"remove",payload:pro,cart:cart})}).catch((err)=>{})
+            dispatch({type:"remove",payload:pro,cart:cart,login:{...login,cart:[...cart]}})}).catch((err)=>{})
+    }
+}
+//search 
+export function actsearch(value,allpro)
+{
+    return (dispatch)=>{
+        let temp=[...allpro]
+        temp=temp.filter((a)=>{
+            return a.title.toLowerCase().includes(value.toLowerCase())
+        })
+        console.log(temp);
+        dispatch({type:"search",payload:temp})
     }
 }
