@@ -42,3 +42,11 @@
 .search{
   margin: 5px 60px;
 }
+.text-white{
+  width: 25%;
+  margin: 10px;
+  text-align: center;
+}
+.bg-dark{
+  align-self:self-end;
+}
