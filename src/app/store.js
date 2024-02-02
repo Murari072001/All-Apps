@@ -1,9 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from '../features/counter/counterSlice'
-import todoReducer from '../features/todolist/todoSlice'
+import { countriesApi } from '../services/countriesApi'
+import countryReducer from '../features/Countries/countrySlice'
+import { setupListeners } from '@reduxjs/toolkit/query'
+
 export const store = configureStore({
   reducer: {
-    count:counterReducer,
-    todo:todoReducer
-},
+    [countriesApi.reducerPath]:countriesApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware().concat(countriesApi.middleware),
+
 })
+
+setupListeners(store.dispatch)

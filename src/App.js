@@ -1,11 +1,9 @@
-import Counter from "./features/counter/Counter";
-import Todolist from "./features/todolist/Todolist";
+import Countries from "./features/Countries/Countries";
 
 function App() {
   return (
     <div className="border border-3 border-dark m-3 p-2">
-      <Todolist></Todolist>
-      <Counter></Counter>
+      <Countries></Countries>
     </div>
   );
 }
