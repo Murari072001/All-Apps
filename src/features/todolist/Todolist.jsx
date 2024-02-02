@@ -22,9 +22,12 @@ function Todolist() {
     console.log(todo)
     return (
         <div className="border border-3 border-info m-4 p-2">
-                <input ref={inp} type="text" onKeyUp={(e) => { dispatch(updatenewtodo(e.target.value)) }} />
-                {!todo.isupdate&&<button type="submit" className="btn btn-danger" onClick={() => { handleAdd() }}>Add</button>}
-                {todo.isupdate&&<button type="submit" className="btn btn-danger" onClick={() => { handleUpdate() }}>Update</button>}
+               <div className="form-floating m-2">
+               <input ref={inp} className="form-control" placeholder="enter new todo" type="text" onKeyUp={(e) => { dispatch(updatenewtodo(e.target.value)) }} />
+               <label htmlFor="inp">Enter new Todo</label>
+                </div>
+                {!todo.isupdate&&<button type="submit" className="btn btn-danger m-2" onClick={() => { handleAdd() }}>Add</button>}
+                {todo.isupdate&&<button type="submit" className="btn btn-danger m-2" onClick={() => { handleUpdate() }}>Update</button>}
             <div>
                 <ul>
                     {
