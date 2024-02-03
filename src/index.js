@@ -10,7 +10,7 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <App></App>,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
