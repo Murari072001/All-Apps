@@ -8,8 +8,7 @@ function Countries()
     var countries = useSelector(state=>state.countries)
     var dispatch = useDispatch()
     const {data,isLoading}=useGetCountriesQuery()
-    // const {country} = useGetCountryByIdQuery()
-
+    console.log(data);
     console.log(data);
     return (
         <div>
@@ -21,7 +20,7 @@ function Countries()
             <ul>
             {
                 data?.map((a)=>{
-                    return <li><Link to={`${a.ccn2}`}>{a.name.common}</Link></li>
+                    return <li><Link to={`/countryDetails/${a.cca2}`}>{a.name.common}</Link></li>
                 })
             }
             </ul>

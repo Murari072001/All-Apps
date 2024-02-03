@@ -7,11 +7,22 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Countries from './features/Countries/Countries';
+import CountryDetails from './features/Countries/CountryDetails';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    children:[{
+      path:"/countries",
+      element:<Countries></Countries>
+    },
+    {
+      path:"/countryDetails/:cid",
+      element:<CountryDetails></CountryDetails>
+    }]
   },
+  
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
