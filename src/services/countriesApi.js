@@ -8,7 +8,7 @@ export const countriesApi = createApi({
         query: () => `all`,
       }),
       getCountryById: builder.query({
-        query:(cid)=>`cid`
+        query:(id)=>`/alpha?codes=${id}`
       })
     }),
   })
