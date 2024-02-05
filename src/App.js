@@ -8,7 +8,7 @@ function App() {
       <Outlet></Outlet>
       <Footer></Footer>
     </>
-  );
+  )
 }
 
 export default App;
