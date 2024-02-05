@@ -9,6 +9,7 @@ function App() {
     <Provider store={store}>
       <div className="border border-3 border-dark m-3 p-2">
       <Link to='/countries'>All Countries</Link>
+      <Link to='/employees'>Employees Details</Link>
       <Outlet></Outlet>
     </div>
     </Provider>
