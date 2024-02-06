@@ -1,11 +1,11 @@
-import Counter from "./features/counter/Counter";
-import Todolist from "./features/todolist/Todolist";
+import AllPlayers from "./features/Players/AllPlayers";
+import SelectedPlayers from "./features/Players/SelectedPlayers";
 
 function App() {
   return (
-    <div className="border border-3 border-dark m-3 p-2">
-      <Todolist></Todolist>
-      <Counter></Counter>
+    <div className="border border-3 border-dark m-3 p-2 d-flex flex-wrap">
+      <AllPlayers></AllPlayers>
+      <SelectedPlayers></SelectedPlayers>
     </div>
   );
 }

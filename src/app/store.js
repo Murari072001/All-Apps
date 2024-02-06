@@ -1,9 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from '../features/counter/counterSlice'
-import todoReducer from '../features/todolist/todoSlice'
+import { jsonApi } from '../services/jsonApi'
+import { setupListeners } from '@reduxjs/toolkit/query'
 export const store = configureStore({
-  reducer: {
-    count:counterReducer,
-    todo:todoReducer
-},
+  reducer: 
+    {
+      [jsonApi.reducerPath]: jsonApi.reducer,
+    },
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(jsonApi.middleware),
 })
+setupListeners(store.dispatch)
