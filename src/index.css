@@ -1,17 +1,20 @@
-
 .bill{
   position: fixed;
   width:30%;
   margin-left:8%
 }
 .childpro{
-  box-shadow: 1px 1px 10px grey;
+  box-shadow: 1px 1px 10px rgb(26, 23, 23);
   width:25%;
 }
-.childpro p{
+.childpro:hover,.child-cart:hover{
+  box-shadow: 0px 0px 40px 10px grey;
+  cursor: pointer;
+}
+.childpro .card-body p{
   text-align: justify;
 }
-.childpro h6 b {
+.childpro .card-body h6 b {
   color:darkblue
 }
 .childpro .btn-warning:hover{
@@ -19,7 +22,7 @@
   transition: 0.6s;
   color: white;
 }
-.childpro img:hover{
+.childpro .card-body img:hover{
   width:30%;
   height: 150px;
   transition: 0.6s;
@@ -29,6 +32,7 @@
 .login{
   text-align: center;
   width: 30%;
+  margin: 100px auto;
 }
 .login form{
   width:90%;
@@ -40,7 +44,8 @@
   width:100%
 }
 .search{
-  margin: 5px 60px;
+  width: 65%;
+  color: whitesmoke;
 }
 .text-white{
   width: 25%;
@@ -49,4 +54,25 @@
 }
 .bg-dark{
   align-self:self-end;
+}
+.logo{
+  width: 50px;
+}
+body{
+  background-color:silver;
+}
+.nav-link,.cart-btn{
+  color: whitesmoke;
+}
+.navbar{
+  background-color: rgb(28, 27, 27)
+}
+.nav-link:hover,.cart-btn:hover{
+  color: blue;
+}
+.form-control,.form-select{
+  border: 2px solid black;
+}
+#search.form-control{
+  border: 2px solid whitesmoke;
 }

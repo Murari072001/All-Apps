@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 
 function UserDashBoard() {
     const navi = useNavigate()
-    // console.log("dash", props);
+    const login =useSelector(state=>state.login.loginUser);
+    useEffect(()=>{
+        if(!login)
+        {
+            navi('/login')
+        }
+    },[])
     return (
         <>
-        {
-            
-            <div className="text-center"><img src="https://i.pinimg.com/originals/c7/e1/b7/c7e1b7b5753737039e1bdbda578132b8.gif"/></div>
-        }
             {<div>
-                {/* <h1>Welcome:{props.login.gender === 'male' ? 'Mr.' : 'Mrs.'}{props.login.firstname}</h1> */}
+                <h1 className="ms-5 mt-2">Welcome:{login?.gender === 'male' ? 'Mr.' : 'Mrs.'}{login?.firstname}</h1>
                 <Outlet></Outlet>
             </div>}
         </>

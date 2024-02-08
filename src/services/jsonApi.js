@@ -21,7 +21,20 @@ export const jsonApi = createApi({
             body:newuser
         })
       }),
+      updateCart: builder.mutation({
+        query:(update)=>({
+            url:`/${update.id}`,
+            method:"PUT",
+            body:update
+        })
+      }),
+      deleteUser: builder.mutation({
+        query:(value)=>({
+            url:`/${value}`,
+            method:"DELETE"
+        })
+      })
     }),
   })
 
-  export const {useLazyGetUserByIdQuery,useGetUsersQuery,useAddNewUserMutation} = jsonApi
+  export const {useLazyGetUserByIdQuery,useGetUsersQuery,useAddNewUserMutation,useUpdateCartMutation,useDeleteUserMutation} = jsonApi   

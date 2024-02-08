@@ -1,60 +1,53 @@
 import React from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { searchproducts } from "../features/loginform/loginSlice";
 
 
 function Header() {
     const navi = useNavigate()
+    const login = useSelector(state => state.login);
+    const dispatch = useDispatch()
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <nav className="navbar navbar-expand-lg navbar-light sticky-top">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to={`/`}>Home</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to={`/login`}>Login</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to={`/register`}>Register</Link>
-                            </li>
-                            {<li className="nav-item">
+                    {login.isLogin && <Link className="navbar-brand" to={`/dashboard`}><img className="logo" src="https://edupoly.in/common/assets/favicon.ico" alt="" /></Link>}
+                    {!login.isLogin && <Link className="navbar-brand" to={`/`}><img className="logo" src="https://edupoly.in/common/assets/favicon.ico" alt="" /></Link>}
+
+                    <div className="collapse navbar-collapse " id="navbarSupportedContent">
+                        <div className="form-floating search">
+                            <input type="search" className="form-control bg-transparent" placeholder="search" id="search" onKeyUp={(e) => { dispatch(searchproducts(e.target.value)) }} />
+                            <label htmlFor="search">Search</label>
+                        </div>
+                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                            {login.isLogin && <li className="nav-item"><Link className="nav-link" to={`/dashboard`}>Home</Link></li>}
+                            {!login.isLogin && <li className="nav-item"><Link className="nav-link" to={`/`}>Home</Link></li>}
+                            <li className="nav-item"><a className="nav-link" href="#contact">Contact Us</a></li>
+                            <li className="nav-item"><a className="nav-link" href="#address">Reach Us</a></li>
+                            <li className="nav-item"><a className="nav-link" href="#follow">Follow Us</a></li>
+                            {!login.isLogin && <li className="nav-item">
+                                <Link className="nav-link" aria-current="page" to={`/login`}>Login</Link>
+                            </li>}
+                            {!login.isLogin && <li className="nav-item">
                                 <Link className="nav-link" to={`/register`}>Register</Link>
                             </li>}
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    More
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="#contact">Contact Us</a></li>
-                                    <li><a className="dropdown-item" href="#address">Address</a></li>
-                                    <li><hr className="dropdown-divider" /></li>
-                                    <li><a className="dropdown-item" href="#follow">Follow Us</a></li>
-                                </ul>
-                            </li>
+                            {login.isLogin && <li className="nav-item">
+                                <a className="nav-link" href={`/login`}>Sign Out</a>
+                            </li>}
+                            {login.isLogin && <li className="nav-item">
+                                <Link className="nav-link" to={`/dashboard/profile`}>Profile</Link>
+                            </li>}
                         </ul>
                     </div>
+                    <button className="btn cart-btn" onClick={() => { navi(login.isLogin ? "/dashboard/cart" : "/login") }}>
+                        <span style={{ fontSize: "30px" }} className="position-relative bi bi-cart3 m-0 p-0">
+                            <span style={{ fontSize: "10px" }} className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{login.loginUser?.cart?.length}
+                            </span>
+                        </span>
+                    </button>
                 </div>
             </nav>
-            {/* <div className="text-end sticky-top bg-light">
-                <button className="btn " onClick={() => { navi(props.login.islogin?"/dashboard":"/login") }}>Home</button>
-                <button className="btn ">Careers</button>
-                <button className="btn ">About Us</button>
-                <button className="btn ">Contact Us</button>
-                {!props.login.islogin && <button className="btn " onClick={() => { navi('/login') }}>Login</button>}
-                {!props.login.islogin && <button className="btn " onClick={() => { navi('/register') }}>Register</button>}
-                {props.login.islogin && <button className="btn " onClick={() => { navi('/dashboard/profile') }}>Profile<i className="person-circle"></i></button>}
-                {props.login.islogin && <button className="btn " onClick={() => { props.rem(navi) }}>Sign Out</button>}
-                <button className="btn " onClick={() => { navi(props.login.islogin?"/dashboard/cart":"/login") }}>
-                <span style={{fontSize:"30px"}} className="position-relative bi bi-cart3 m-0 p-0">
-                    <span style={{fontSize:"10px"}} className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{props.login.cart.length}
-                </span>
-                </span>
-                </button>
-
-            </div> */}
         </>
     )
 }

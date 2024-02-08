@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
     return (
-        <div className="bg-dark d-flex">
+        <div className="bg-dark d-flex mt-5">
 
             <div className="text-white"><h1>The Best Shopping Experience is Here</h1></div>
             <div id="contact" className="text-white">

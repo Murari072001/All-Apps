@@ -11,18 +11,50 @@ import {
 } from "react-router-dom";
 import UserForm from './features/userform/UserForm';
 import LoginForm from './features/loginform/LoginForm';
+import UserDashBoard from './features/loginform/Dashboard';
+import Profile from './features/loginform/Profile';
+import AllProducts from './features/products/AllProducts';
+import Cart from './features/products/Cart';
+import ViewProduct from './features/products/ViewProduct';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    children:[{
+    children:[
+      {
+        path:"/",
+        element:<AllProducts></AllProducts>
+      },
+      {
       path:"/register",
       element:<UserForm></UserForm>
     },
     {
       path:"/login",
       element:<LoginForm></LoginForm>
-    }]
+    },
+    {
+      path:"/dashboard",
+      element:<UserDashBoard></UserDashBoard>,
+      children:[{
+        path:"/dashboard",
+        element:<AllProducts></AllProducts>
+      },
+    {
+      path:"/dashboard/cart",
+      element:<Cart></Cart>
+    },  
+    {
+      path:"/dashboard/profile",
+      element:<Profile></Profile>
+    },
+    {
+      path:"/dashboard/:pid",
+      element:<ViewProduct></ViewProduct>
+    }
+    ]
+    }  
+  ]
   },
   
 ]);

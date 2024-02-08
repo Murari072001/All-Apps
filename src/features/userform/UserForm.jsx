@@ -45,40 +45,40 @@ const UserForm = () => {
             <form ref={userFormDetails} className="w-50 ms-auto me-auto text-center" onSubmit={userFormik.handleSubmit}>
                 {userFormik.touched.firstname && <span style={{ color: 'red' }}>{userFormik.errors.firstname}</span>}
                 <div className="form-floating m-2">
-                    <input type="text" id="fn" name='firstname' placeholder="firstname:" className={userFormik.touched.firstname ? ((userFormik.errors.firstname) ? "form-control is-invalid" : "form-control is-valid") : "form-control"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
+                    <input type="text" id="fn" name='firstname' placeholder="firstname:" className={userFormik.touched.firstname ? ((userFormik.errors.firstname) ? "form-control is-invalid bg-transparent" : "form-control is-valid bg-transparent") : "form-control bg-transparent"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
                     <label htmlFor="fn">Firstname:</label>
                 </div>
                 {userFormik.touched.lastname && <span style={{ color: 'red' }}>{userFormik.errors.lastname}</span>}
                 <div className="form-floating m-2">
-                    <input type="text" id="ln" name='lastname' placeholder="lastname:" className={userFormik.touched.lastname ? ((userFormik.errors.lastname) ? "form-control is-invalid" : "form-control is-valid") : "form-control"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
+                    <input type="text" id="ln" name='lastname' placeholder="lastname:" className={userFormik.touched.lastname ? ((userFormik.errors.lastname) ? "form-control is-invalid bg-transparent" : "form-control is-valid bg-transparent") : "form-control bg-transparent"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
                     <label htmlFor="fn">Lastname:</label>
                 </div>
                 {userFormik.touched.dob && <span style={{ color: 'red' }}>{userFormik.errors.dob}</span>}
                 <div className="form-floating m-2">
-                    <input type="date" id="dob" name='dob' placeholder="dob:" className={userFormik.touched.dob ? ((userFormik.errors.dob) ? "form-control is-invalid" : "form-control is-valid") : "form-control"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
+                    <input type="date" id="dob" name='dob' placeholder="dob:" className={userFormik.touched.dob ? ((userFormik.errors.dob) ? "form-control is-invalid bg-transparent" : "form-control is-valid bg-transparent") : "form-control bg-transparent"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
                     <label htmlFor="dob">Date of Birth:</label>
                 </div>
                 {userFormik.touched.gender && <span style={{ color: 'red' }}>{userFormik.errors.gender}</span>}
                 <div className="m-2">
-                    <select className="form-select" name='gender' onChange={userFormik.handleChange} onBlur={userFormik.handleBlur}>
-                        <option selected disabled>--Please select Gender--</option>
-                        <option defaultValue="male" >Male</option>
-                        <option defaultValue="female">Female</option>
+                    <select className="form-select bg-transparent" name='gender' onChange={userFormik.handleChange} onBlur={userFormik.handleBlur}>
+                        <option className="bg-transparent" selected disabled>--Please select Gender--</option>
+                        <option className="bg-transparent" defaultValue="male" >Male</option>
+                        <option className="bg-transparent" defaultValue="female">Female</option>
                     </select>
                 </div>
                 {userFormik.touched.email && <span style={{ color: 'red' }}>{userFormik.errors.email}</span>}
                 <div className="form-floating m-2">
-                    <input type="email" id="email" name='email' placeholder="email:" className={userFormik.touched.email ? ((userFormik.errors.email) ? "form-control is-invalid" : "form-control is-valid") : "form-control"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
+                    <input type="email" id="email" name='email' placeholder="email:" className={userFormik.touched.email ? ((userFormik.errors.email) ? "form-control is-invalid bg-transparent" : "form-control is-valid bg-transparent") : "form-control bg-transparent"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
                     <label htmlFor="email">Enter User Id:</label>
                 </div>
                 {userFormik.touched.password && <span style={{ color: 'red' }}>{userFormik.errors.password}</span>}
                 <div className="form-floating m-2">
-                    <input type="password" id="pswd" name='password' placeholder="password:" className={userFormik.touched.password ? ((userFormik.errors.password) ? "form-control is-invalid" : "form-control is-valid") : "form-control"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
+                    <input type="password" id="pswd" name='password' placeholder="password:" className={userFormik.touched.password ? ((userFormik.errors.password) ? "form-control is-invalid bg-transparent" : "form-control is-valid bg-transparent") : "form-control bg-transparent"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
                     <label htmlFor="pswd">Enter New Password:</label>
                 </div>
                 {userFormik.touched.mobile && <span style={{ color: 'red' }}>{userFormik.errors.mobile}</span>}
                 <div className="form-floating m-2">
-                    <input type="number" id="mobile" name='mobile' placeholder="mobile:" className={userFormik.touched.mobile ? ((userFormik.errors.mobile) ? "form-control is-invalid" : "form-control is-valid") : "form-control"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
+                    <input type="number" id="mobile" name='mobile' placeholder="mobile:" className={userFormik.touched.mobile ? ((userFormik.errors.mobile) ? "form-control is-invalid bg-transparent" : "form-control is-valid bg-transparent") : "form-control bg-transparent"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />
                     <label htmlFor="mobile">Mobile Number:</label>
                 </div>
                 <button type="submit" className="btn btn-primary w-25 ">Register</button>
