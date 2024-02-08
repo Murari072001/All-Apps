@@ -39,7 +39,6 @@ function ViewProduct() {
             })
         }
     }
-    console.log(data);
     return (
         <>
             {

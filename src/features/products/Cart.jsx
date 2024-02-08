@@ -14,7 +14,6 @@ function Cart() {
     {
         let temp = {...pro}
         temp.cartcount=temp.cartcount+1
-        console.log("inc",ind,temp);
 
         let temp2=[...login.cart]
         temp2[ind]={...temp}
@@ -28,12 +27,10 @@ function Cart() {
 
     function dec(pro,ind)
     {
-        console.log(pro);
         if(pro.cartcount>1)
         {
             let temp = {...pro}
         temp.cartcount=temp.cartcount-1
-        console.log("inc",ind,temp);
 
         let temp2=[...login.cart]
         temp2[ind]={...temp}
@@ -52,7 +49,6 @@ function Cart() {
         
         let temp3={...login}
         temp3.cart=[...temp2]
-        console.log(ind,temp2);
         updateCartInServer(temp3).then(()=>{
             dispatch(updatecart(temp2))
         })

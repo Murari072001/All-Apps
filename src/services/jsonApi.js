@@ -9,7 +9,6 @@ export const jsonApi = createApi({
       }),
       getUserById: builder.query({
         query:(id)=>{
-          console.log("inner",id) 
           return ({
             url:`/?email=${id.username}&password=${id.password}`
           })}
