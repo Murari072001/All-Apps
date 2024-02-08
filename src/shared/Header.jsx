@@ -17,7 +17,7 @@ function Header() {
 
                     <div className="collapse navbar-collapse " id="navbarSupportedContent">
                         <div className="form-floating search">
-                            <input type="search" className="form-control bg-transparent text-light" placeholder="search" id="search" onKeyUp={(e) => { dispatch(searchproducts(e.target.value)) }} />
+                            <input type="search" className="form-control bg-transparent text-light" placeholder="search" id="search" onChange={(e) => { dispatch(searchproducts(e.target.value)) }} />
                             <label htmlFor="search">Search</label>
                         </div>
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
