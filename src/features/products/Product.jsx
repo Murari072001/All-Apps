@@ -1,19 +1,19 @@
 import React from "react"
 import { useNavigate } from "react-router"
 
-function Product({ product, index, add }) {
+function Product({ product, index, add ,isLogin }) {
     const navi = useNavigate()
     return (
         <>
-            <div className="card-body" onClick={()=>{navi(`/dashboard/${product.id}`)}}>
+            <div className="card-body" onClick={()=>{isLogin?navi(`/dashboard/${product.id}`):navi(`/${product.id}`)}}>
                 <div className="text-center">            
-                    <img className="ms-auto me-auto" src={product.image} style={{ width: "25%", height: "100px" }} />
+                    <img className="ms-auto me-auto proImg" src={product.image}/>
                 </div>
                 <h6 className="mt-2 mb-auto"><b>{product.title}</b></h6>
                 <b className="mt-auto">category : {product.category}</b>
-                <p className="text-truncate">{product.description}</p>
-                <div className="d-flex justify-content-between mb-2 ms-0">
-                    <span className="btn btn-success w-25">{product.rating.rate}&nbsp;<i className="bi bi-star-fill"></i></span>
+                <p className="text-truncate ">{product.description}</p>
+                <div className="d-flex justify-content-between mb-2">
+                    <span className="rating btn btn-success">{product.rating.rate}&nbsp;<i className="bi bi-star-fill"></i></span>
                     <h3 className="text-success"><b className="bi bi-currency-rupee"></b>{product.price}</h3>
                 </div>
             </div>

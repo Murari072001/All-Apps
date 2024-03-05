@@ -1,78 +1,243 @@
-.bill{
+.bill {
   position: fixed;
-  width:30%;
-  margin-left:8%
+  width: 30%;
+  margin-left: 8%
 }
-.childpro{
+#carouselExampleDark{
+  width: 100%;
+}
+.allpro{
+  gap: 2rem 1rem;
+  justify-content: space-evenly;
+  margin: 1rem;
+}
+  
+.childpro {
   box-shadow: 1px 1px 10px rgb(26, 23, 23);
-  width:25%;
+  width: 25%;
+  text-align: justify;
+  text-justify: inter-word;
 }
-.childpro:hover,.child-cart:hover{
+
+.childpro:hover,
+.child-cart:hover {
   box-shadow: 0px 0px 40px 10px grey;
   cursor: pointer;
 }
-.childpro .card-body p{
+
+.childpro .card-body p {
   text-align: justify;
 }
+
 .childpro .card-body h6 b {
-  color:darkblue
+  color: darkblue
 }
-.childpro .btn-warning:hover{
+
+.childpro .btn-warning:hover {
   background-color: blueviolet;
   transition: 0.6s;
   color: white;
 }
-.childpro .card-body img:hover{
-  width:30%;
+.proImg{
+  width: 50%;
+  height: 150px;
+}
+.proImg:hover {
+  width: 50%;
   height: 150px;
   transition: 0.6s;
   transform: scale(1.3);
   cursor: pointer;
 }
-.login{
+.rating{
+  width: 40%;
+}
+.login {
   text-align: center;
   width: 30%;
   margin: 100px auto;
 }
-.login form{
-  width:90%;
+.register{
+  width: 50%;
+}
+.login form {
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
 }
-.login form button{
-  width:100%
+
+.login form button {
+  width: 100%
 }
-.search{
-  width: 65%;
+
+.search {
+  width: 50%;
   color: whitesmoke;
 }
-.text-white{
+
+.text-white {
   width: 25%;
   margin: 10px;
   text-align: center;
 }
-.bg-dark{
-  align-self:self-end;
+
+.bg-dark {
+  align-self: self-end;
 }
-.logo{
+
+.logo {
   width: 50px;
 }
-body{
-  background-color:silver;
+
+body {
+  background-color: silver;
 }
-.nav-link,.cart-btn{
+
+.nav-link,
+.cart-btn {
   color: whitesmoke;
 }
-.navbar{
-  background-color: rgb(28, 27, 27)
-}
-.nav-link:hover,.cart-btn:hover{
+
+.nav-link:hover,
+.cart-btn:hover {
   color: blue;
 }
-.form-control,.form-select{
+
+.form-control,
+.form-select {
   border: 2px solid black;
 }
-#search.form-control{
+
+#search.form-control {
   border: 2px solid whitesmoke;
+}
+
+.bi-whatsapp:hover {
+  color: #59CE72;
+}
+
+.bi-instagram:hover {
+  background: linear-gradient(60deg, #F58529, #FEDA77, #DD2A7B, #8134AF, #515BD4);
+}
+
+.bi-youtube:hover {
+  color: #FF0000
+}
+
+.bi-twitter:hover {
+  color: #00ACEE;
+}
+
+.bi-telegram:hover {
+  color: #24A1DE;
+}
+
+.viewPro img {
+  height: 300px;
+  width: 20%;
+}
+
+.viewPro p {
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: larger;
+}
+.viewPro h1{
+  text-align: justify;
+  text-justify: inter-word;
+}
+.cart{
+  display: flex;
+  
+}
+.items{
+  width: 55%;
+}
+.billcard{
+  width: 45%;
+  position: relative;
+}
+.viewChild{
+  width: 75%;
+}
+@media (max-width:780px) {
+  .viewPro p {
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+  }
+  .childpro{
+    width: 45%;
+  }
+  .viewPro img {
+    height: 300px;
+    width: 20%;
+  }
+  .footer{
+    flex-direction: column;
+  }
+  .footer div{
+    width: 100%;
+    text-align: center;
+  }
+  .proImg{
+    width: 80%;
+    height: 300px;
+  }
+  .proImg:hover {
+    width: 80%;
+    height: 300px;
+  }
+  .login{
+    width: 70%;
+  }
+  .register{
+    width: 50%;
+  }
+  
+}
+@media (max-width:450px)
+{
+  .viewPro img {
+    height: 200px;
+    width: 100%;
+  }
+  .search {
+    width: 30%;
+    color: whitesmoke;
+  }
+  .childpro{
+    width: 80%;
+  }
+  .proImg{
+    width: 80%;
+    height: 200px;
+  }
+  .rating{
+    width: 50%;
+  }
+  .login{
+    width: 90%;
+  }
+  .register{
+    width: 80%;
+  }
+  .cart{
+    flex-direction: column;
+  }
+  .bill{
+    position:relative;
+    width: 90%;
+  }
+  .items{
+    width: 100%;
+  }
+  .billcard{
+    width: 100%;
+  }
+  .viewChild{
+    width: 100%;
+  }
 }

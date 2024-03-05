@@ -45,14 +45,14 @@ function ViewProduct() {
                 isLoading && <div className="text-center"><img src="https://i.pinimg.com/originals/c7/e1/b7/c7e1b7b5753737039e1bdbda578132b8.gif" /></div>
             }
             {!isLoading &&
-                <div className="d-flex flex-wrap">
-                    <img src={data.image} style={{ width: "20%" }} alt="" />
-                    <div className="w-75">
+                <div className="d-flex flex-wrap p-5 viewPro">
+                    <img src={data.image} alt="" />
+                    <div className="viewChild ms-3">
                         <h1>{data.title}</h1>
                         <h5 className="mt-auto">category : {data.category}</h5>
-                        <h5 className="">{data.description}</h5>
+                        <p className="">{data.description}</p>
                         <div className="d-flex justify-content-between mb-2 ms-0">
-                            <span className="btn btn-success w-25">{data.rating.rate}&nbsp;<i className="bi bi-star-fill"></i></span>
+                            <span className="btn btn-success rating">{data.rating.rate}&nbsp;<i className="bi bi-star-fill"></i></span>
                             <h3 className="text-success"><b className="bi bi-currency-rupee"></b>{data.price}</h3>
                         </div>
                         <h5>Available Stock: {data.rating.count}</h5>

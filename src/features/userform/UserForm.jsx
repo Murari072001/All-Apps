@@ -42,7 +42,7 @@ const UserForm = () => {
     return (
         <div className="container border border-dark border-2 p-3 mt-3 rounded-5">
             <h1 className="text-center">User Registration Form</h1>
-            <form ref={userFormDetails} className="w-50 ms-auto me-auto text-center" onSubmit={userFormik.handleSubmit}>
+            <form ref={userFormDetails} className="register ms-auto me-auto text-center" onSubmit={userFormik.handleSubmit}>
                 {userFormik.touched.firstname && <span style={{ color: 'red' }}>{userFormik.errors.firstname}</span>}
                 <div className="form-floating m-2">
                     <input type="text" id="fn" name='firstname' placeholder="firstname:" className={userFormik.touched.firstname ? ((userFormik.errors.firstname) ? "form-control is-invalid bg-transparent" : "form-control is-valid bg-transparent") : "form-control bg-transparent"} onChange={userFormik.handleChange} onBlur={userFormik.handleBlur} />

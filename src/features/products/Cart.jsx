@@ -66,8 +66,8 @@ function Cart() {
             }
             {
                 login?.cart?.length > 0 &&
-                <div className="d-flex flex-wrap">
-                    <div className="d-flex flex-wrap" style={{ width: "55%" }}>
+                <div className="cart">
+                    <div className="d-flex flex-wrap items">
                         {
                             login.cart.map((product, index) => {
                                 return (
@@ -76,7 +76,7 @@ function Cart() {
                             })
                         }
                     </div>
-                    <div style={{ width: "45%" }} className="position-relative "><BillDesk></BillDesk></div>
+                    <div className="billcard"><BillDesk></BillDesk></div>
                 </div>
             }
         </>

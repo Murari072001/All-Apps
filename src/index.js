@@ -20,43 +20,47 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    children:[
+    children: [
       {
-        path:"/",
-        element:<AllProducts></AllProducts>
+        path: "/",
+        element: <AllProducts></AllProducts>
       },
       {
-      path:"/register",
-      element:<UserForm></UserForm>
-    },
-    {
-      path:"/login",
-      element:<LoginForm></LoginForm>
-    },
-    {
-      path:"/dashboard",
-      element:<UserDashBoard></UserDashBoard>,
-      children:[{
-        path:"/dashboard",
-        element:<AllProducts></AllProducts>
+        path: "/:pid",
+        element: <ViewProduct></ViewProduct>
       },
-    {
-      path:"/dashboard/cart",
-      element:<Cart></Cart>
-    },  
-    {
-      path:"/dashboard/profile",
-      element:<Profile></Profile>
-    },
-    {
-      path:"/dashboard/:pid",
-      element:<ViewProduct></ViewProduct>
-    }
+      {
+        path: "/register",
+        element: <UserForm></UserForm>
+      },
+      {
+        path: "/login",
+        element: <LoginForm></LoginForm>
+      },
+      {
+        path: "/dashboard",
+        element: <UserDashBoard></UserDashBoard>,
+        children: [{
+          path: "/dashboard",
+          element: <AllProducts></AllProducts>
+        },
+        {
+          path: "/dashboard/cart",
+          element: <Cart></Cart>
+        },
+        {
+          path: "/dashboard/profile",
+          element: <Profile></Profile>
+        },
+        {
+          path: "/dashboard/:pid",
+          element: <ViewProduct></ViewProduct>
+        }
+        ]
+      }
     ]
-    }  
-  ]
   },
-  
+
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
